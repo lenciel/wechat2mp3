@@ -10,7 +10,7 @@ import datetime
 def is_silk_file(file_path):
     input_file = open(file_path, 'rb')
     header = input_file.read(10)
-    silk_header = '#!SILK_V3'
+    silk_header = b'#!SILK_V3'
     input_file.close()
     return header[1:] == silk_header
 
@@ -122,7 +122,7 @@ class Main(argparse.Action):
                     else:
                         convert_amr_file(dirname, filename, converted)
 
-            print "Done!"
+            print("Done!")
         except:
             print("Something went wrong converting the audio files.\n"
                 "Common problems:\n"
